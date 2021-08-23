@@ -1,4 +1,4 @@
-const PaymentService = require("./paymentService")
+import PaymentService from "./paymentService";
 
 const createPaymentRecord = (emailAddress) => {
   let individualDetail = PaymentService.getIndividualDetail(emailAddress);

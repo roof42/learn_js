@@ -1,4 +1,4 @@
-const {individuals, workingRecords} = require("./data")
+import { individuals, workingRecords } from "./data";
 
 const getIndividualDetail = (emailAddress) => {
   let individualDetail = individuals[emailAddress];
@@ -9,4 +9,4 @@ const getIndividualWorkingRecord = (emailAddress) => {
   return workingRecord;
 };
 
-module.exports = {getIndividualDetail, getIndividualWorkingRecord}
+module.exports = { getIndividualDetail, getIndividualWorkingRecord };
