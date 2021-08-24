@@ -1,6 +1,6 @@
-import * as PaymentService from "./models/paymentService.js";
 import express from "express";
 import bodyParser from "body-parser";
+import * as PaymentService from "./models/paymentService.js";
 
 const port = 3000;
 const app = express();
@@ -21,7 +21,7 @@ app.get("/:email", (req, res) => {
 app.post("/", function (req, res) {
   const individual = req.body.individual;
   console.log(individual.email);
-  res.send(req.body);
+  res.send(individual);
 });
 
 app.listen(port, () => {
