@@ -1,4 +1,4 @@
-import PaymentService from "./paymentService";
+import * as PaymentService from "./paymentService";
 
 export const createPaymentRecord = (emailAddress) => {
   let individualDetail = PaymentService.getIndividualDetail(emailAddress);
