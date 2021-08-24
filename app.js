@@ -1,10 +1,19 @@
-const express = require("express")
-const app = express()
+import * as PaymentService from "./models/paymentService.js";
+import express from "express";
 
-app.get("", (req, res) => {
-    res.json("Hello World!!!")
-})
+const port = 3000;
+const app = express();
 
-app.listen(3000, () => {
-    console.log("Server is running")
-})
+app.get("/", (req, res) => {
+  res.json("Hello World!!!");
+});
+
+app.get("/:email", (req, res) => {
+  let email = req.params.email;
+  let individual = PaymentService.getIndividualDetail(email);
+  res.send(individual);
+});
+
+app.listen(port, () => {
+  console.log("Server is running on " + port);
+});
