@@ -1,6 +1,6 @@
-const PaymentService = require("./paymentService")
+import PaymentService from "./paymentService";
 
-const createPaymentRecord = (emailAddress) => {
+export const createPaymentRecord = (emailAddress) => {
   let individualDetail = PaymentService.getIndividualDetail(emailAddress);
   let workingRecord = PaymentService.getIndividualWorkingRecord(emailAddress);
   let totalPayment = totalPaymentForIndividual(individualDetail, workingRecord);
@@ -18,5 +18,3 @@ const totalPaymentForIndividual = (individualDetail, workingRecord) => {
   let witholdingTax = totalIncome * 0.03;
   return totalIncome - witholdingTax;
 };
-
-module.exports = createPaymentRecord;

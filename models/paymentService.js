@@ -1,12 +1,10 @@
-const {individuals, workingRecords} = require("./data")
+import * as Database from "./data.js";
 
-const getIndividualDetail = (emailAddress) => {
-  let individualDetail = individuals[emailAddress];
+export const getIndividualDetail = (emailAddress) => {
+  let individualDetail = Database.individuals[emailAddress];
   return individualDetail;
 };
-const getIndividualWorkingRecord = (emailAddress) => {
-  let workingRecord = workingRecords[emailAddress];
+export const getIndividualWorkingRecord = (emailAddress) => {
+  let workingRecord = Database.workingRecords[emailAddress];
   return workingRecord;
 };
-
-module.exports = {getIndividualDetail, getIndividualWorkingRecord}
