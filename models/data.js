@@ -23,5 +23,3 @@ export const workingRecords = {
     submitedDate: new Date(1995, 11, 17, 3, 24, 0),
   },
 };
-
-//module.exports = { individuals, workingRecords };
