@@ -18,9 +18,9 @@ mongoose
 const db = mongoose.connection;
 // // db.on("error", console.error.bind(console, "connection error:"));
 
-Model.Kitten.findById("6125d42601fec21244415c4b")
-  .then((kitten) => {
-    console.log(kitten);
+Model.Kitten.find()
+  .then((kittens) => {
+    console.log(kittens);
   })
   .catch((err) => {
     console.log("Error");
