@@ -1,7 +1,5 @@
 import express from "express";
 import * as PaymentService from "./models/paymentService.js";
-import mongoose from "mongoose";
-import * as Model from "./schemas/define.js";
 import models, { connectDB } from "./schemas/index.js";
 
 const port = 3000;
