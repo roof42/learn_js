@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import * as Model from "./define.js";
+import IndividualDetail from "./define.js";
 
 mongoose
   .connect("mongodb://localhost:27017/test", {
@@ -16,13 +16,12 @@ mongoose
   });
 
 const db = mongoose.connection;
-// // db.on("error", console.error.bind(console, "connection error:"));
 
-Model.Kitten.find()
-  .then((kittens) => {
-    console.log(kittens);
+IndividualDetail.find()
+  .then((individuals) => {
+    console.log(individuals);
   })
   .catch((err) => {
-    console.log("Error");
+    console.log("Error" + err);
   })
   .finally((info) => console.log("All done"));
