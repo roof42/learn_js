@@ -1,13 +1,6 @@
 import mongoose from "mongoose";
 
-var Schema = mongoose.Schema;
-
-const kittySchema = new Schema({
-  name: String,
-});
-export const Kitten = mongoose.model("Kitten", kittySchema);
-
-const individualDetail = new Schema({
+const individualDetail = new mongoose.Schema({
   email: String,
   name: String,
   bankAccount: String,
@@ -15,7 +8,7 @@ const individualDetail = new Schema({
   tel: String,
   submitedDate: { type: Date, default: Date.now },
 });
-export const IndividualDetail = mongoose.model(
-  "IndividualDetail",
-  individualDetail
-);
+
+const IndividualDetail = mongoose.model("IndividualDetail", individualDetail);
+
+export default IndividualDetail;
