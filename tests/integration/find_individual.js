@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import IndividualDetail from "./define.js";
+import IndividualDetail from "../../schemas/define.js";
 
 mongoose
   .connect("mongodb://localhost:27017/test", {
