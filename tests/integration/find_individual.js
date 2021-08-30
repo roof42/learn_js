@@ -1,8 +1,14 @@
 import mongoose from "mongoose";
 import IndividualDetail from "../../schemas/define.js";
+import dotenv from "dotenv";
+
+dotenv.config();
+const host = process.env.MONGO_HOST;
+const port = process.env.MONGO_PORT;
+const database = process.env.MONGO_DATABASE;
 
 mongoose
-  .connect("mongodb://localhost:27017/test", {
+  .connect(`mongodb://${host}:${port}/${database}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
