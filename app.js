@@ -1,10 +1,11 @@
 import express from "express";
 import * as PaymentService from "./models/paymentService.js";
 import { connectDB } from "./schemas/index.js";
+import dotenv from "dotenv";
 
-const port = 3000;
+dotenv.config();
+const port = process.env.APP_PORT;
 const app = express();
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
