@@ -1,6 +1,6 @@
 import express from "express";
 import * as PaymentService from "./models/paymentService.js";
-import models, { connectDB } from "./schemas/index.js";
+import { connectDB } from "./schemas/index.js";
 
 const port = 3000;
 const app = express();
@@ -9,22 +9,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/health-check", (req, res) => {
-  models.IndividualDetail.find()
-    .then((individuals) => {
-      console.log(individuals);
-      res.send(individuals);
-    })
-    .catch((err) => {
-      console.log("Error" + err);
-    })
-    .finally((info) => console.log("All done"));
+  res.send("OK");
 });
 
 app.post("/individual-informations", (req, res) => {
   let individualDetail = req.body.individualDetail;
-  console.log(individualDetail);
   individualDetail.submitedDate = new Date();
   res.send(individualDetail);
+});
+
+app.get("/individual-informations", async (req, res) => {
+  let individuals = await PaymentService.getAllIndividualDetail();
+  res.send(individuals);
 });
 
 app.get("/individual-informations/:email", (req, res) => {
@@ -36,7 +32,6 @@ app.get("/individual-informations/:email", (req, res) => {
 app.post("/working-records", (req, res) => {
   let workingRecord = req.body.workingRecord;
   workingRecord.submitedDate = new Date();
-  console.log(workingRecord);
   res.send(workingRecord);
 });
 
