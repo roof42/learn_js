@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import IndividualDetail from "./define.js";
+import IndividualDetail from "./definitions/individualDetail.js";
 import dotenv from "dotenv";
 
 dotenv.config();
