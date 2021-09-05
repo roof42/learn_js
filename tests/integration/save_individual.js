@@ -1,21 +1,23 @@
-import models, { connectDB } from "../../schemas/index.js";
+import models, { connectDB, closeConnection } from "../../schemas/index.js";
 import dotenv from "dotenv";
 
 dotenv.config();
+
 const roof = new models.IndividualDetail({
-  email: "namon@odds.team",
-  name: "Namon Panitsombat",
+  email: "roof@odds.team",
+  name: "Roof Panitsombat",
   bankAccount: "123123123",
   dailyRate: 2000,
   tel: "0933233293",
 });
 
-connectDB()
-  .then(async () => {
-    roof.save(() => {
-      console.log("Record saved");
-    });
-  })
-  .catch((err) => {
-    console.log("Failed to connect to MongoDB", err);
-  });
+try {
+  await connectDB();
+  let savedDoc = await roof.save();
+  console.log(`Result ${savedDoc}`);
+} catch (error) {
+  console.log(`Error ${err}`);
+} finally {
+  await closeConnection();
+  console.log("Connection closed");
+}
