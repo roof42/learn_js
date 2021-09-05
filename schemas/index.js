@@ -7,8 +7,8 @@ const host = process.env.MONGO_HOST;
 const port = process.env.MONGO_PORT;
 const database = process.env.MONGO_DATABASE;
 
-const connectDB = () => {
-  return mongoose.connect(`mongodb://${host}:${port}/${database}`, {
+const connectDB = async () => {
+  return await mongoose.connect(`mongodb://${host}:${port}/${database}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
@@ -16,7 +16,13 @@ const connectDB = () => {
   });
 };
 
+const closeConnection = async () => {
+  await mongoose.connection.close(() => {
+    process.exit();
+  });
+};
+
 const models = { IndividualDetail };
 
-export { connectDB };
+export { connectDB, closeConnection };
 export default models;
